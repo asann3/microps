@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "net.h"
+#include "platform.h"
 #include "util.h"
 
 #define DUMMY_MTU UINT16_MAX
@@ -13,6 +14,9 @@ static int dummy_transmit(
     debugdump(data, len);
     /* drop data */
     return 0;
+}
+
+static int dummy_isr(unsigned int irq, void *id) {
 }
 
 static struct net_device_ops dummy_ops = {
