@@ -5,7 +5,19 @@ UseTab: Never
 ColumnLimit: 100
 BreakBeforeBraces: Attach
 AllowShortFunctionsOnASingleLine: None
-SortIncludes: Never
 AlignAfterOpenBracket: DontAlign
 ContinuationIndentWidth: 4
 BinPackParameters: false
+
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  # 1. Cシステムヘッダ（C標準 + POSIX）
+  - Regex: '^<[a-z_0-9]+\.h>$'
+    Priority: 1
+  # 2. サブディレクトリ付きシステム・サードパーティ (<sys/..>, <linux/..> 等)
+  - Regex: "^<.+>$"
+    Priority: 2
+  # 3. プロジェクト内ヘッダ
+  - Regex: '^".*"$'
+    Priority: 3
